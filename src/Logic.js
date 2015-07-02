@@ -18,7 +18,6 @@ App.Logic = (function() {
 
     showNextNumber = function(){
         var nextNum = calcRandomNum();
-        console.log("Logic: showNextNumber, nextNum = " + nextNum.toString());
         $(that).trigger("displayNumber", nextNum);
     };
 
