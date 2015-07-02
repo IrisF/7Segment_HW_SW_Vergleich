@@ -1,44 +1,57 @@
 App.View = (function() {
     var that = {},
     $button = null,
-    $number = null,
     timeToWait = 1000,
-    clicked = 0,
-    startDate = 0,
-    endDate = 0,
+    timeToWaitForNextNum = 10000,
     newNum = null,
+    counter = 0;
 
     init = function() {
         $button = $("#button");
-    	$number = $("#number");
-        $number.addClass("invisible");
+        addClassFromNumber();
         $button.on("click", calcNextNumber);
     	return that;
     },
 
     showNewNumber = function(nextNum){
-        $number.removeClass("invisible");
-        newNum = Number(nextNum);
-        $number.text(newNum);
+        removeClassFromNumber();
+        for(var i = 0; i <6; i++){
+            newNum = Number(nextNum[i]);
+            $("#number" + i).text(newNum);
+        }
+        counter++;
+        addClassFromNumberAfterTimeout();
+        startOver();       
+    },
+
+    startOver = function(){
         setTimeout(function(){
-            $number.addClass("invisible");
-        }, timeToWait);
+            if(counter < 16){
+                calcNextNumber();
+            }
+        }, timeToWaitForNextNum);
+    }
+
+    removeClassFromNumber = function(){
+        for(var i = 0; i <6; i++){
+            $("#number" + i).removeClass("invisible");
+        }
+    },
+
+    addClassFromNumberAfterTimeout = function(){
+           setTimeout(function(){
+            addClassFromNumber();
+            }, timeToWait);
+    },
+
+    addClassFromNumber = function(){
+        for(var i = 0; i <6; i++){
+            $("#number" + i).addClass("invisible");
+        }
     },
 
     calcNextNumber = function(){
-        console.log("Button clicked");
-        if(clicked %2 == 0){
-            $(that).trigger("getRandomNumber");
-            startDate = new Date().getTime();
-            $button.text("Stop");
-            clicked++;
-        }else{
-            endDate = new Date().getTime();
-            var seconds = (endDate - startDate)/1000;
-            console.log("Zahl: " + newNum + " Zeit: " + seconds);
-            $button.text("Naechste Zahl");
-            clicked++;
-        }
+        $(that).trigger("getRandomNumber");
     };
 
     that.init = init;

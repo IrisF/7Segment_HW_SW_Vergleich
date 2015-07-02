@@ -1,17 +1,25 @@
 App.Logic = (function() {
     var that = {},
-    nextNum = null,
-    min = 100000,
-    max = 1000000,
+    min = 0,
+    max = 9,
    
     init = function() {
        	return that;
     },
 
+    calcRandomNum = function(){
+        var number = "";
+        for(var i=0; i<6;i++){
+            var randomNum = Math.round(Math.random() * (max - min) + min);
+            number += randomNum.toString();
+        }
+        return number;
+    },
+
     showNextNumber = function(){
-        nextNum = Math.random() * (max - min) + min;
-        console.log("Logic: showNextNumber, nextNum = " + Math.round(nextNum));
-        $(that).trigger("displayNumber", Math.round(nextNum));
+        var nextNum = calcRandomNum();
+        console.log("Logic: showNextNumber, nextNum = " + nextNum.toString());
+        $(that).trigger("displayNumber", nextNum);
     };
 
 
