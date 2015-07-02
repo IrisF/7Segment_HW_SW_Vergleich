@@ -33,7 +33,7 @@ App.View = (function() {
         console.log("Nutzer: " + user + ", Zeit: " + time);
         $button = $("#button");
         addClassFromNumber();
-        $button.on("click", calcNextNumber);
+        $button.on("click", showNewNumber);
     	return that;
     },
 
@@ -68,7 +68,7 @@ App.View = (function() {
     startOver = function(){
         setTimeout(function(){
             if(counter < 10){
-                calcNextNumber();
+                showNewNumber();
             }
         }, timeToWaitForNextNum);
     }
@@ -89,14 +89,9 @@ App.View = (function() {
         for(var i = 0; i <6; i++){
             $("#number" + i).addClass("invisible");
         }
-    },
-
-    calcNextNumber = function(){
-        $(that).trigger("getRandomNumber");
     };
 
     that.init = init;
-    that.showNewNumber = showNewNumber;
 
 	return that;
 })();
