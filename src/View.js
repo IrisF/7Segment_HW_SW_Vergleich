@@ -1,7 +1,7 @@
 App.View = (function() {
     var that = {},
     $button = null,
-    timeToWait = 500,
+    timeToWait = 1000,
     timeToWaitForNextNum = 5000,
     timeToStart = 5000,
     newNum = null,
