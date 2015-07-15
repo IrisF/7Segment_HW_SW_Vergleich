@@ -7,7 +7,6 @@ body {
 	src: url("../Fonts/Segment7Standard.OTF"); 
 	font-weight: 200;
     font-style: normal;
-    font-color:red;
 }
 
 .container{
@@ -18,7 +17,7 @@ body {
     width: 50px;
     height:75px;
     margin-right: 1px;
-    background-color: #B2B3B3;
+    background-color: #D2D3CA;
     text-align: center;
     float:left;
 }
@@ -59,5 +58,15 @@ body {
     margin-right:50px;
     margin-left: 3px;
     float: left;
-    color:#FF0000;
+    color:#FF4141;
+}
+
+.number-background{
+    position: absolute;
+    margin-bottom: 270px;
+    margin-top: 0px;
+    margin-right:50px;
+    margin-left: 3px;
+    float: left;
+    color:#E1E3CD;
 }
